@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zameen.com | Register Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+
+</head>
+
+
+<body>
+
+    <h1>Store Analytics</h1>
+
+    <h3>Register</h3>
+
+    {% if message %}
+        <p style="color:red">{{ message }}</p>
+    {% endif %}
+
+    <form action="/perform_registration" method="post">
+        <label class="h">Store Name</label><br>
+        <input class="l" type="text" name="user_ka_name" required><br>
+        <label class="h">Registration Id</label><br>
+        <input class="l" type="text" name="user_ka_id" required><br>
+        <label class="h">Password</label><br>
+        <input class="l" type="password" name="user_ka_password" required><br><br>
+        <input id="a" type="submit" value="Register">
+    </form>
+
+    <p style="color:white">Already a member? <a href="/">Login Here</a></p>
+
+</body>
+</html>

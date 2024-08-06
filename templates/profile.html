@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PSL Analyzer | Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <script>
+        function addBranch() {
+            const branchContainer = document.getElementById('branch-container');
+            const branchCount = branchContainer.children.length + 1;
+            const branchElement = document.createElement('div');
+            branchElement.setAttribute('id', 'branch-' + branchCount);
+            branchElement.innerHTML = `
+                <a href="/branch"><button>Branch ${branchCount}</button></a>
+                <button onclick="removeBranch('branch-${branchCount}')">Remove</button>
+                <br>
+            `;
+            branchContainer.appendChild(branchElement);
+        }
+
+        function removeBranch(branchId) {
+            const branchElement = document.getElementById(branchId);
+            branchElement.remove();
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome to Your Store Analytics</h1><br>
+    <div id="branch-container">
+        <div id="branch-1">
+            <a href="/branch"><button>Branch 1</button></a>
+            <button onclick="removeBranch('branch-1')">Remove</button>
+            <br>
+        </div>
+    </div>
+    <button onclick="addBranch()">Add Branch</button>
+</body>
+</html>

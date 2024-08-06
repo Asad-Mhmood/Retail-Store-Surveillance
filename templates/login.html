@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zameen.com | Login Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+<body>
+
+    <h1>Store Analytics</h1>
+
+    <h3>Enter Your Credentials</h3>
+
+    {% if message %}
+        <p style="color:red">{{ message }}</p>
+    {% endif %}
+
+    <form action="/perform_login" method="post">
+        <label class="h">Registration Id</label><br>
+        <input class="l" type="text" name="user_ka_id" required><br><br>
+        <label class="h">Password</label><br>
+        <input class="l" type="password" name="user_ka_password" required><br><br>
+        <input id = "a" type="submit" value="Login">
+    </form>
+
+    <p style="color:white">Not a member? <a href="/register">Register Here</a></p>
+
+</body>
+</html>
