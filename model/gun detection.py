@@ -6,11 +6,11 @@ import mysql.connector
 #cursor = con.cursor()
 
 # Load a model
-model = YOLO('best.pt')  # pretrained YOLOv8n model
-cap = cv2.VideoCapture('videos\gunman-in-store.mp4')  # Add Video Path
+model = YOLO('gun.pt')  # pretrained YOLOv8n model
+cap = cv2.VideoCapture('videos\gun4.mp4')  # Add Video Path
 
 
-
+msg = 1
 classNames = [
     'Gun'
 
@@ -59,21 +59,26 @@ while True:
                 id = int(box.id[0])
 
 
-            if conf>20:
+            if conf>40:
                 cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 255), 3)
                 cv2.putText(img, currentClass, (x1, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 0, 255), thickness=2)
                 cv2.putText(img, str(conf), (x1 + 90, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 0, 255),thickness=2)
-                cv2.putText(img, str(id), (x1 + 180, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 0, 255),thickness=2)
+                #cv2.putText(img, str(id), (x1 + 180, y1 - 10), cv2.FONT_HERSHEY_SIMPLEX, 1.0, (255, 0, 255),thickness=2)
 
 
-                ## WhatsApp Alert
-                '''# pip install pywhatkit
-                import pywhatkit as kit
-                # Specify the phone number (with country code) and the message
-                phone_number = "+923214110555"
-                message = "Gun detected"
-                # Send the message instantly
-                kit.sendwhatmsg_instantly(phone_number, message)'''
+                if msg == 1:
+                    ## WhatsApp Alert
+                    # pip install pywhatkit
+                    import pywhatkit as kit
+
+                    # Specify the phone number (with country code) and the message
+                    phone_number = "+923214110555"
+                    # phone_number = "+923249456407"
+                    message = "Gun detected"
+                    # Send the message instantly
+                    kit.sendwhatmsg_instantly(phone_number, message)
+                    msg = msg + 1
+
 
 
 

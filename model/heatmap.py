@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 # Load a model
 model = YOLO('yolov8n.pt')  # pretrained YOLOv8n model
-cap = cv2.VideoCapture('123.mp4')
+cap = cv2.VideoCapture('model/videos/gender1.mp4')
 
 classNames = [
     'person', 'bicycle', 'car', 'motorcycle', 'airplane',
@@ -42,7 +42,7 @@ def map_to_layout(x, y, matrix):
     return int(transformed_points[0][0][0]), int(transformed_points[0][0][1])
 
 # Load the store layout image
-layout_img = cv2.imread('store layout.PNG')
+layout_img = cv2.imread('layout1.PNG')
 layout_height, layout_width, _ = layout_img.shape
 
 # Initialize heatmap overlay

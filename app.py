@@ -58,7 +58,7 @@ def profile():
 
 @app.route('/branch')
 def branch():
-    cursor2.execute("SELECT * FROM footfall")
+    cursor2.execute("SELECT * FROM footfalls")
     data = cursor2.fetchall()
     print(type(data))
     df = pd.DataFrame(data, columns=['Male','Female'])

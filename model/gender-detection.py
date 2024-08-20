@@ -73,7 +73,7 @@ while True:
 
 
             if limits[1] < cy < limits[3] and limits[2] - 6 < cx < limits[2] + 6:
-                # if currentClass == 'car' or currentClass == 'motorcycle' or currentClass == 'bus' or currentClass == 'truck' or currentClass=='bicycle':
+
 
                 #if totalcounts.count(id) == 0:
                     #totalcounts.append(id)
@@ -82,12 +82,12 @@ while True:
                 cv2.circle(img, (cx, cy), 10, (0, 0, 255), cv2.FILLED)
 
                 if currentClass == 'Male':
-                    cursor.execute("""INSERT INTO `footfall` (`Male`,`Female`)VALUES
+                    cursor.execute("""INSERT INTO `footfalls` (`Male`,`Female`)VALUES
                     ('{}','{}')""".format(1, 0))
                     con.commit()
 
                 if currentClass == 'Female':
-                    cursor.execute("""INSERT INTO `footfall` (`Male`,`Female`)VALUES
+                    cursor.execute("""INSERT INTO `footfalls` (`Male`,`Female`)VALUES
                     ('{}','{}')""".format(0, 1))
                     con.commit()
 
